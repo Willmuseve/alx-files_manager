@@ -36,7 +36,7 @@ class RedisClient {
   /**
    * Stores a key and value along with time of expiration
    * @param {String} key: The key of the item to store
-   * @param {String | Number | Boolean} value: 
+   * @param {String | Number | Boolean} value:
    * @param {Number} duration: Expiration time of the item in seconds.
    * @returns {Promise<void>}
    */
@@ -48,7 +48,7 @@ class RedisClient {
   /**
    * Deletes the value of a  key.
    * @param {String} key: The key of the item to remove
-   * @returns {Promise<void>}
+   * @returns {Promisevoid}
    */
   async del(key) {
     await promisify(this.client.DEL).bind(this.client)(key);
