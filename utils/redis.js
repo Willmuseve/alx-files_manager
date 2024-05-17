@@ -1,9 +1,9 @@
 import { createClient } from 'redis';
 import { promisify } from 'util';
 
-//Redis client
+// Redis client
 class RedisClient {
-  // Constructor creates a new class instance
+  // Constructor
   constructor() {
     this.client = createClient();
     this.isClientConnected = true;
@@ -17,7 +17,7 @@ class RedisClient {
   }
 
   /**
-   * Checks if client connection to redis server is alive
+   * client connection
    * @returns {boolean}
    */
   isAlive() {
@@ -25,8 +25,7 @@ class RedisClient {
   }
 
   /**
-   * Gets the value of a key.
-   * @param {String} key: the key of the item to get
+   * Gets the value of a given key.
    * @returns {String | Object}
    */
   async get(key) {
@@ -34,9 +33,8 @@ class RedisClient {
   }
 
   /**
-   * Stores a key and value along with time of expiration
+   * Stores a key and value along with expiration time
    * @param {String} key: The key of the item to store
-   * @param {String | Number | Boolean} value:
    * @param {Number} duration: Expiration time of the item in seconds.
    * @returns {Promise<void>}
    */
@@ -46,9 +44,9 @@ class RedisClient {
   }
 
   /**
-   * Deletes the value of a  key.
+   * Deletes the value of a given key.
    * @param {String} key: The key of the item to remove
-   * @returns {Promisevoid}
+   * @returns {Promise<void>}
    */
   async del(key) {
     await promisify(this.client.DEL).bind(this.client)(key);
